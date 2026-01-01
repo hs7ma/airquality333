@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نظام مراقبة العوامل البيئية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🌍 نظام مراقبة العوامل البيئية</h1>
-            <p class="subtitle">مراقبة مباشرة للبيئة المحيطة</p>
+            <h1>نظام مراقبة العوامل البيئية</h1>
+            <p class="subtitle">مراقبة مباشرة للبيئة المحيطة في الوقت الفعلي</p>
         </header>
 
         <div class="status-indicator">
@@ -21,7 +24,11 @@
         <div class="sensors-grid">
             <!-- درجة الحرارة -->
             <div class="sensor-card temperature">
-                <div class="card-icon">🌡️</div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>
+                    </svg>
+                </div>
                 <h2>درجة الحرارة</h2>
                 <div class="value" id="temperature">--</div>
                 <div class="unit">°C</div>
@@ -30,7 +37,13 @@
 
             <!-- الرطوبة -->
             <div class="sensor-card humidity">
-                <div class="card-icon">💧</div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17.21 9.21a6.5 6.5 0 0 1-9.42 0"/>
+                        <path d="M12 2v20"/>
+                        <path d="M12 2a10 10 0 0 1 10 10"/>
+                    </svg>
+                </div>
                 <h2>الرطوبة</h2>
                 <div class="value" id="humidity">--</div>
                 <div class="unit">%</div>
@@ -39,7 +52,12 @@
 
             <!-- الغاز -->
             <div class="sensor-card gas">
-                <div class="card-icon">💨</div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v20"/>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                </div>
                 <h2>مستوى الغاز</h2>
                 <div class="value" id="gas">--</div>
                 <div class="unit">PPM</div>
@@ -48,7 +66,12 @@
 
             <!-- الإضاءة -->
             <div class="sensor-card light">
-                <div class="card-icon">💡</div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"/>
+                    </svg>
+                </div>
                 <h2>الإضاءة</h2>
                 <div class="value" id="light">--</div>
                 <div class="unit">Lux</div>

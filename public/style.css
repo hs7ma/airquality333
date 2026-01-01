@@ -4,86 +4,148 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary-color: #2563eb;
+    --primary-dark: #1e40af;
+    --secondary-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --card-bg: #ffffff;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --border-color: #e5e7eb;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Cairo', 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg-gradient);
     min-height: 100vh;
-    padding: 20px;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
     direction: rtl;
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow: hidden;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    overflow: hidden;
 }
 
+/* Header Styles */
 header {
     text-align: center;
     color: white;
-    margin-bottom: 30px;
-    padding: 20px;
+    margin-bottom: 8px;
+    padding: 8px 12px;
+    flex-shrink: 0;
 }
 
 header h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-size: 2.75rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    letter-spacing: -0.5px;
+    line-height: 1.2;
 }
 
 .subtitle {
-    font-size: 1.2em;
-    opacity: 0.9;
+    font-size: 1.125rem;
+    font-weight: 400;
+    opacity: 0.95;
+    letter-spacing: 0.3px;
+    display: block;
 }
 
+/* Status Indicator */
 .status-indicator {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    gap: 8px;
+    background: var(--card-bg);
+    padding: 8px 16px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
 }
 
 .status-dot {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background-color: #ccc;
-    animation: pulse 2s infinite;
+    background-color: #9ca3af;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    box-shadow: 0 0 0 0 rgba(156, 163, 175, 0.7);
 }
 
 .status-dot.connected {
-    background-color: #4CAF50;
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
 }
 
 .status-dot.disconnected {
-    background-color: #f44336;
+    background-color: var(--danger-color);
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
 }
 
+.status-indicator span:last-child {
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+}
+
+/* Sensors Grid */
 .sensors-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-bottom: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+    margin-bottom: 8px;
+    flex: 1;
+    min-height: 0;
 }
 
 .sensor-card {
-    background: white;
-    border-radius: 15px;
-    padding: 25px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 16px 12px;
     text-align: center;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 0;
 }
 
 .sensor-card::before {
@@ -92,115 +154,402 @@ header h1 {
     top: 0;
     left: 0;
     right: 0;
-    height: 5px;
-    background: linear-gradient(90deg, #667eea, #764ba2);
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
 }
 
 .sensor-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.sensor-card:hover::before {
+    transform: scaleX(1);
+}
+
+.sensor-card.temperature {
+    border-top: 4px solid #ef4444;
 }
 
 .sensor-card.temperature::before {
-    background: linear-gradient(90deg, #ff6b6b, #ee5a6f);
+    background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+
+.sensor-card.humidity {
+    border-top: 4px solid #06b6d4;
 }
 
 .sensor-card.humidity::before {
-    background: linear-gradient(90deg, #4ecdc4, #44a08d);
+    background: linear-gradient(90deg, #06b6d4, #0891b2);
+}
+
+.sensor-card.gas {
+    border-top: 4px solid #f59e0b;
 }
 
 .sensor-card.gas::before {
-    background: linear-gradient(90deg, #feca57, #ff9ff3);
+    background: linear-gradient(90deg, #f59e0b, #d97706);
+}
+
+.sensor-card.light {
+    border-top: 4px solid #fbbf24;
 }
 
 .sensor-card.light::before {
-    background: linear-gradient(90deg, #ffd93d, #f6b93b);
+    background: linear-gradient(90deg, #fbbf24, #f59e0b);
 }
 
 .card-icon {
-    font-size: 3em;
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 8px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.05));
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.sensor-card.temperature .card-icon {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
+}
+
+.sensor-card.temperature .card-icon svg {
+    color: #ef4444;
+}
+
+.sensor-card.humidity .card-icon {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(6, 182, 212, 0.05));
+}
+
+.sensor-card.humidity .card-icon svg {
+    color: #06b6d4;
+}
+
+.sensor-card.gas .card-icon {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
+}
+
+.sensor-card.gas .card-icon svg {
+    color: #f59e0b;
+}
+
+.sensor-card.light .card-icon {
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(251, 191, 36, 0.05));
+}
+
+.sensor-card.light .card-icon svg {
+    color: #fbbf24;
+}
+
+.card-icon svg {
+    width: 20px;
+    height: 20px;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.sensor-card:hover .card-icon {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(37, 99, 235, 0.1));
+}
+
+.sensor-card.temperature:hover .card-icon {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.1));
+}
+
+.sensor-card.humidity:hover .card-icon {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(6, 182, 212, 0.1));
+}
+
+.sensor-card.gas:hover .card-icon {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.1));
+}
+
+.sensor-card.light:hover .card-icon {
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(251, 191, 36, 0.1));
 }
 
 .sensor-card h2 {
-    color: #333;
-    margin-bottom: 15px;
-    font-size: 1.3em;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    flex-shrink: 0;
 }
 
 .value {
-    font-size: 3em;
-    font-weight: bold;
-    color: #667eea;
-    margin: 10px 0;
-    transition: color 0.3s ease;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 4px 0;
+    transition: all 0.3s ease;
+    letter-spacing: -1px;
+    font-family: 'Cairo', sans-serif;
+    line-height: 1;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sensor-card.temperature .value {
+    color: #ef4444;
+}
+
+.sensor-card.humidity .value {
+    color: #06b6d4;
+}
+
+.sensor-card.gas .value {
+    color: #f59e0b;
+}
+
+.sensor-card.light .value {
+    color: #fbbf24;
 }
 
 .unit {
-    font-size: 1.2em;
-    color: #666;
-    margin-bottom: 10px;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
 }
 
 .status {
-    font-size: 0.9em;
-    padding: 5px 10px;
-    border-radius: 20px;
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 12px;
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 4px;
     font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
 }
 
 .status.normal {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
 }
 
 .status.warning {
-    background-color: #ff9800;
-    color: white;
+    background-color: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fde68a;
 }
 
 .status.danger {
-    background-color: #f44336;
-    color: white;
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
 }
 
+/* Info Section */
 .info-section {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 8px;
+    flex-shrink: 0;
 }
 
 .info-card {
-    background: white;
-    border-radius: 10px;
-    padding: 20px;
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 8px 12px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
 }
 
 .info-card h3 {
-    color: #667eea;
-    margin-bottom: 10px;
+    color: var(--primary-color);
+    margin-bottom: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .info-card p {
-    color: #666;
-    font-size: 1.1em;
+    color: var(--text-secondary);
+    font-size: 0.7rem;
+    font-weight: 400;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
+    .container {
+        padding: 6px;
+    }
+
+    header {
+        padding: 6px 8px;
+        margin-bottom: 6px;
+    }
+
     header h1 {
-        font-size: 2em;
+        font-size: 1.25rem;
+        margin-bottom: 2px;
     }
-    
+
+    .subtitle {
+        font-size: 0.7rem;
+        display: none; /* إخفاء العنوان الفرعي في الشاشات الصغيرة */
+    }
+
+    .status-indicator {
+        padding: 6px 12px;
+        margin-bottom: 6px;
+        font-size: 0.75rem;
+    }
+
     .sensors-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-bottom: 6px;
     }
-    
+
+    .sensor-card {
+        padding: 12px 8px;
+        border-radius: 10px;
+    }
+
+    .card-icon {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 6px;
+    }
+
+    .card-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .sensor-card h2 {
+        font-size: 0.75rem;
+        margin-bottom: 4px;
+    }
+
     .value {
-        font-size: 2.5em;
+        font-size: 1.75rem;
+        margin: 2px 0;
+    }
+
+    .unit {
+        font-size: 0.65rem;
+        margin-bottom: 2px;
+    }
+
+    .status {
+        font-size: 0.65rem;
+        padding: 3px 8px;
+        margin-top: 2px;
+    }
+
+    .info-section {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+
+    .info-card {
+        padding: 6px 8px;
+    }
+
+    .info-card h3 {
+        font-size: 0.65rem;
+        margin-bottom: 2px;
+    }
+
+    .info-card p {
+        font-size: 0.65rem;
     }
 }
 
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.1rem;
+    }
+
+    .sensors-grid {
+        gap: 6px;
+    }
+
+    .sensor-card {
+        padding: 10px 6px;
+    }
+
+    .value {
+        font-size: 1.5rem;
+    }
+
+    .card-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .card-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .sensor-card h2 {
+        font-size: 0.7rem;
+    }
+
+    .unit {
+        font-size: 0.6rem;
+    }
+
+    .status {
+        font-size: 0.6rem;
+        padding: 2px 6px;
+    }
+}
+
+/* منع التمرير */
+@media (max-width: 768px) {
+    html, body {
+        overflow: hidden;
+        height: 100%;
+        position: fixed;
+        width: 100%;
+    }
+}
+
+/* Loading Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.sensor-card {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.sensor-card:nth-child(1) { animation-delay: 0.1s; }
+.sensor-card:nth-child(2) { animation-delay: 0.2s; }
+.sensor-card:nth-child(3) { animation-delay: 0.3s; }
+.sensor-card:nth-child(4) { animation-delay: 0.4s; }
