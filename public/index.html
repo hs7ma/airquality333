@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام مراقبة العوامل البيئية</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌍 نظام مراقبة العوامل البيئية</h1>
+            <p class="subtitle">مراقبة مباشرة للبيئة المحيطة</p>
+        </header>
+
+        <div class="status-indicator">
+            <span id="connectionStatus" class="status-dot"></span>
+            <span id="connectionText">جاري الاتصال...</span>
+        </div>
+
+        <div class="sensors-grid">
+            <!-- درجة الحرارة -->
+            <div class="sensor-card temperature">
+                <div class="card-icon">🌡️</div>
+                <h2>درجة الحرارة</h2>
+                <div class="value" id="temperature">--</div>
+                <div class="unit">°C</div>
+                <div class="status" id="tempStatus">--</div>
+            </div>
+
+            <!-- الرطوبة -->
+            <div class="sensor-card humidity">
+                <div class="card-icon">💧</div>
+                <h2>الرطوبة</h2>
+                <div class="value" id="humidity">--</div>
+                <div class="unit">%</div>
+                <div class="status" id="humStatus">--</div>
+            </div>
+
+            <!-- الغاز -->
+            <div class="sensor-card gas">
+                <div class="card-icon">💨</div>
+                <h2>مستوى الغاز</h2>
+                <div class="value" id="gas">--</div>
+                <div class="unit">PPM</div>
+                <div class="status" id="gasStatus">--</div>
+            </div>
+
+            <!-- الإضاءة -->
+            <div class="sensor-card light">
+                <div class="card-icon">💡</div>
+                <h2>الإضاءة</h2>
+                <div class="value" id="light">--</div>
+                <div class="unit">Lux</div>
+                <div class="status" id="lightStatus">--</div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="info-card">
+                <h3>آخر تحديث</h3>
+                <p id="lastUpdate">--</p>
+            </div>
+            <div class="info-card">
+                <h3>معدل التحديث</h3>
+                <p>كل 5 ثواني</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
